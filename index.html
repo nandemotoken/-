@@ -1,90 +1,68 @@
 <!DOCTYPE html>
-<html lang="ja">
-        <head>
-                <meta charset="UTF-8">
-                <title>ReiwaToken front-end</title>
-                <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <script language="javascript" type="text/javascript" src="web3.min.js"></script>
-                <script language="javascript" type="text/javascript" src="./reiwa_abi.js"></script>
-        </head>
-        <body>
-                <h1>令和トークン配布サイト</h1>
-                <div id="front"></div>
-                <img id="reiwaimg" src="reiwa_100_100.png" <img id="reiwaimg" src="reiwa_100_100.png" >
-                <button type="button" id="button_set">残高チェック</button><!-- 追加 -->
-                <h4>reiwatoken@gmail.com</h4>
-        <script>
-          window.addEventListener('load', function() {
-                  var reiwatoken;
-                  var userAccount;
-                  var addr = web3.eth.accounts[0]
+<html>
 
-                  function startApp() {
-                          //コントラクト読込
-                          var reiwaAddress = "0xeADCFa3A680324C0d981B73DE1EE7e30D7865415";
-                          reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>reiwa_token_new</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Team-Grid.css">
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./assets/js/reiwa_abi.js"></script>
+    <script src="./assets/js/web3_019.js"></script>
+    <script src="./assets/js/reiwa_contract.js"></script>
+</head>
 
+<body>
+    <div class="highlight-phone">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="intro">
+                        <h2>令和トークン</h2>
+                        <p class="text-break">令和トークンは『令和最初のスマートコントラクト』です。<br>Ethereumのメインネット上にブロック番号7669458 (Apr-30-2019 03:00:07 PM +UTC)で成立いたしました。<br>タイムスタンプを日本時間に直すと5月1日0時0分7秒、つまり令和最初のブロックで生成されています。<br><a href="https://etherscan.io/tx/0xf88b568bcf6d95650c8809cc6f85863c7b9b34bdcb0a3e39e641ee60b37055be">https://etherscan.io/tx/0xf88b568bcf6d95650c8809cc6f85863c7b9b34bdcb0a3e39e641ee60b37055be</a><br></p>
+                        <a
+                            class="btn btn-primary" id="reiwa_zandaka" role="button" href="#" style="margin: 10px;font-size: 20px;background-color: rgb(5,218,154);">残高確認</a><a class="btn btn-primary" id="reiwa_get" role="button" href="#" style="margin: 10px;font-size: 20px;background-color: rgb(5,218,52);">令和トークンを取得</a></div>
+                </div>
+                <div class="col-sm-4 d-xl-flex justify-content-xl-center"><img src="assets/img/reiwa_500_500.png" style="width: 300px;height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="team-grid">
+        <div class="container">
+            <div class="intro"></div>
+            <div class="row d-xl-flex justify-content-xl-center people">
+                <div class="col-md-4 col-lg-3 item">
+                    <div class="box" style="background-image: url(&quot;assets/img/sugoi.png&quot;);">
+                        <div class="cover">
+                            <h3 class="name">NandemoToken</h3>
+                            <p class="title">Founder</p>
+                            <div class="social"><a href="https://www.facebook.com/nandemotoken"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/NandemoToken"><i class="fa fa-twitter"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <p><strong>令和トークンでは、令和元年企画としてブロックチェーンに関するイベントを開催してまいります。</strong><br><br>令和元年企画①　140字論文：テーマ『令和時代のブロックチェーン』　優勝：@airpoco2 様<br>非中央集権的ながらもさまざまな分野で情報が一元化されていくと思います。例えばカルテや電子マネー、各種ポイント、公文書など。また、情報の改ざんができないことを考えると、これまで感覚的であった信頼性が記録され、ランクや数値などで目に見えるようになるのではないでしょうか。<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="https://twitter.com/reiwatoken"><i class="icon ion-social-twitter"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="http://www.令和トークン.jp">Home</a></li>
+                <li class="list-inline-item"><a href="http://www.令和トークン.jp/assets/pdf/iPhone_Cipher_Get_ReiwaToken.pdf">Manual</a></li>
+            </ul>
+            <p class="copyright">NandemoToken © 2019</p>
+        </footer>
+    </div>
+</body>
 
-                          //ユーザーの登録
-                          web3.eth.getAccounts(function(err, accounts) {
-                                  console.log(accounts[0]);
-                                  userAccount = accounts[0];
-                          });
-
-
-
-                          //コントラクトから内容の取得
-                          reiwatoken.symbol.call({from: addr}, function(err, symbol) {
-                                  //ABI expects string here,
-                                  if(err) { console.log(err) }
-                                  console.log('Token symbol: ' + symbol)
-                          })
-
-
-                          document.getElementById("button_set").onclick = () => {
-                                  getAmount();
-                          }
-
-                          document.getElementById('reiwaimg').onclick = () =>{
-                                  imgClick();
-                          }
-
-                  }
-
-
-                  function getAmount(){
-                          return reiwatoken.balanceOf.call( web3.eth.accounts[0]  , function(err, bal) {
-                                  if(err) { console.log(err) }
-                                  console.log('you have: ' + bal + 'reiwa token')
-                                  alert("令和トークンの保有数"+ bal )
-                          })
-
-                  }
-
-                  function imgClick() {
-                          alert("令和トークンを取得します");
-                          reiwatoken.newToken100({ from:addr} , function (err , txHash) {
-                                  if(err) console.error(err)
-                                  if (txHash) {
-                                          console.log('Transaction sent')
-                                          console.dir(txHash)
-                                  }
-                          });
-                  }
-
-
-                  //MetaMaskがインストールされているかのチェック
-                  if (typeof web3 !== 'undefined') {
-                          // メタマスクのWeb3のプロバイダを使用する。
-                          web3js = new Web3(web3.currentProvider);
-                          alert("イーサリアムウォレットを利用します");
-                  } else {
-                          // メタマスクがインストールされていない場合、メタマス クのインストールを促す
-                          alert("イーサリアムウォレットを導入してください(MetaMask等)");
-                  }
-
-                  // ユーザーのアプリ開始
-                  startApp()
-          })
-        </script>
-        </body>
+</html>
