@@ -6,6 +6,10 @@ $(window).on('load' , function(){
 	var reiwatoken;
 	var addr;
 
+
+ethereum.enable();
+
+
 //関数の事前準備
 	function checkWallet(){
 		if (typeof web3 !== 'undefined') {
