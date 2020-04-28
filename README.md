@@ -1,3 +1,3 @@
 # reiwatoken
 令和最初のスマートコントラクト『令和トークン』のソースコードです。
-http://www.令和トークン.jp
+http://www.reiwatoken.jp
