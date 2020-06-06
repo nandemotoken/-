@@ -9,9 +9,12 @@ let addr;
 //読み込み待ち
 window.onload = async function () {
 
-
-
 ethereum.enable();
+
+//ここから処理
+checkWallet();
+startApp();
+
 }
 
 //関数の事前準備
@@ -23,14 +26,13 @@ ethereum.enable();
 			console.log("MetaMask？どこ？");
 		}
 	}
-	function getAmount(){
-		reiwatoken.balanceOf.call( web3.eth.accounts[0]  , function(err, bal) {
-			alert("令和トークンの保有数"+ bal )
-		})
+	async function getAmount(){
+		bal = await reiwatoken.methods.balanceOf.call( addr[0] )
+		alert("令和トークンの保有数"+ bal )
 	}
-	function sendTransaction() {
+	async function sendTransaction() {
 		alert("令和トークンを取得します");
-		reiwatoken.newToken100({ from:addr} , function (err , txHash) {});
+		reiwatoken.newToken100({ from:addr[0]} , function (err , txHash) {});
 	}
 	async function startApp(){
 		// reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
@@ -42,9 +44,7 @@ ethereum.enable();
 		$('#reiwa_get').on('click' , sendTransaction );
 	}
 
-//ここから処理
-	checkWallet();
-	startApp();
+
 
 
 
