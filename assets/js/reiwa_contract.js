@@ -20,6 +20,7 @@ window.onload = async function () {
 	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_MetaMask.html"){
 		await ethereum.enable();
 		web3js = new Web3(web3.currentProvider);	
+		startApp();
 	}
 
 	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_Authereum.html"){
@@ -27,10 +28,10 @@ window.onload = async function () {
     auprovider = await authereum.getProvider()
     auweb3 = await new Web3(provider) 
     auaddress = await authereum.getAccountAddress()
+	austartApp();
 	}
 
 	//処理
-	startApp();
 
 }
 
@@ -47,6 +48,12 @@ async function getAmount() {
 	bal = await reiwatoken.methods.balanceOf(addr[0]).call()
 	alert("令和トークンの保有数" + bal)
 }
+
+async function augetAmount() {
+	bal = await reiwatoken.methods.balanceOf(auaddress).call()
+	alert("令和トークンの保有数" + bal)
+}
+
 // async function sendTransaction() {
 // 	alert("令和トークンを取得します");
 // 	reiwatoken.newToken100({ from:addr[0]} , function (err , txHash) {});
@@ -55,6 +62,11 @@ async function getAmount() {
 async function faucetToken() {
 	alert("運営プールから、令和トークンを1つ取得します");
 	reiwafaucet.methods.faucetToken().send({ from: addr[0] })
+}
+
+async function aufaucetToken() {
+	alert("運営プールから、令和トークンを1つ取得します");
+	reiwafaucet.methods.faucetToken().send({ from: auaddress })
 }
 
 async function startApp() {
@@ -68,6 +80,13 @@ async function startApp() {
 	// $('#reiwa_get').on('click', sendTransaction);
 }
 
+async function austartApp() {
+	// reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
+	reiwatoken = new web3js.eth.Contract(reiwaABI, reiwaAddress);
+	reiwafaucet = new web3js.eth.Contract(faucetABI, faucetAddress);
+	addr = await web3js.eth.getAccounts();
+	console.log("javascript working user address is " + addr[0]);
+}
 
 
 
