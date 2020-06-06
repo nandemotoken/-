@@ -84,7 +84,7 @@ async function austartApp() {
 	// reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
 	reiwatoken = new web3au.eth.Contract(reiwaABI, reiwaAddress);
 	reiwafaucet = new web3au.eth.Contract(faucetABI, faucetAddress);
-	addr = await web3js.eth.getAccounts();
+	addr = await web3au.eth.getAccounts();
 	console.log("javascript working user address is " + addr[0]);
 }
 
