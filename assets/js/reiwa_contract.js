@@ -27,7 +27,7 @@ startApp();
 		}
 	}
 	async function getAmount(){
-		bal = await reiwatoken.methods.balanceOf.call( addr[0] )
+		bal = await reiwatoken.methods.balanceOf(addr[0]).call()
 		alert("令和トークンの保有数"+ bal )
 	}
 	async function sendTransaction() {
