@@ -18,7 +18,8 @@ let addr;
 window.onload = async function () {
 
 	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_MetaMask.html"){
-		ethereum.enable();		
+		await ethereum.enable();
+		web3js = new Web3(web3.currentProvider);	
 	}
 
 	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_Authereum.html"){
@@ -34,15 +35,15 @@ window.onload = async function () {
 
 }
 
-//関数の事前準備
-function checkWallet() {
-	if (typeof web3 !== 'undefined') {
-		web3js = new Web3(web3.currentProvider);
-		console.log("MetaMaskを利用します");
-	} else {
-		console.log("MetaMask？どこ？");
-	}
-}
+// //関数の事前準備
+// function checkWallet() {
+// 	if (typeof web3 !== 'undefined') {
+// 		web3js = new Web3(web3.currentProvider);
+// 		console.log("MetaMaskを利用します");
+// 	} else {
+// 		console.log("MetaMask？どこ？");
+// 	}
+// }
 async function getAmount() {
 	bal = await reiwatoken.methods.balanceOf(addr[0]).call()
 	alert("令和トークンの保有数" + bal)
