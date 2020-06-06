@@ -26,7 +26,7 @@ window.onload = async function () {
 	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_Authereum.html"){
 	authereum = await new Authereum('mainnet')
     auprovider = await authereum.getProvider()
-    auweb3 = await new Web3(provider) 
+    auweb3 = await new Web3(auprovider) 
     auaddress = await authereum.getAccountAddress()
 	austartApp();
 	}
