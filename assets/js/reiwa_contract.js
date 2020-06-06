@@ -40,13 +40,13 @@ async function getAmount() {
 
 async function faucetToken() {
 	alert("運営プールから、令和トークンを1つ取得します");
-
+	reiwafaucet.methods.faucetToken().send({ from: addr[0] })
 }
 
 async function startApp() {
 	// reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
 	reiwatoken = new web3js.eth.Contract(reiwaABI, reiwaAddress);
-	reiwafaucet = new web3js.eth.Contract(faucetABI, faucetAddress)
+	reiwafaucet = new web3js.eth.Contract(faucetABI, faucetAddress);
 	// addr = web3.eth.accounts[0];
 	addr = await web3js.eth.getAccounts();
 	console.log("javascript working user address is " + addr[0]);
