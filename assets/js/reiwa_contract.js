@@ -3,6 +3,11 @@ let web3js;
 const reiwaAddress = "0xeADCFa3A680324C0d981B73DE1EE7e30D7865415";
 const faucetAddress = "0xB3d225839dAD0567FF713dDBdcEc7bCB6C2536B0";
 
+//authereum関連
+let authereum;
+let auprovider;
+let auweb3;
+let auaddress;
 
 //変数定義
 let reiwatoken;
@@ -12,7 +17,16 @@ let addr;
 //読み込み待ち
 window.onload = async function () {
 
-	ethereum.enable();
+	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_MetaMask.html"){
+		ethereum.enable();		
+	}
+
+	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_Authereum.html"){
+	authereum = await new Authereum('mainnet')
+    auprovider = await authereum.getProvider()
+    auweb3 = await new Web3(provider) 
+    auaddress = await authereum.getAccountAddress()
+	}
 
 	//処理
 	checkWallet();
