@@ -30,7 +30,6 @@ window.onload = async function () {
 	}
 
 	//処理
-	checkWallet();
 	startApp();
 
 }
