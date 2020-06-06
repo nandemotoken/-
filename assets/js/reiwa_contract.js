@@ -1,14 +1,17 @@
 
-//jQuery + web3.js
-$(window).on('load' , function(){
+let web3js;
+const reiwaAddress = "0xeADCFa3A680324C0d981B73DE1EE7e30D7865415";
+
+
+//読み込み待ち
+window.onload = async function () {
 
 //変数定義
 	var reiwatoken;
 	var addr;
 
-
 ethereum.enable();
-
+}
 
 //関数の事前準備
 	function checkWallet(){
@@ -29,7 +32,6 @@ ethereum.enable();
 		reiwatoken.newToken100({ from:addr} , function (err , txHash) {});
 	}
 	function startApp(){
-		var reiwaAddress = "0xeADCFa3A680324C0d981B73DE1EE7e30D7865415";
 		reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
 		addr = web3.eth.accounts[0];
 		console.log("javascript working user address is "+ addr);
@@ -41,8 +43,7 @@ ethereum.enable();
 	checkWallet();
 	startApp();
 
-//$(window).on引数の無名関数を閉じる
-}); 
+
 
 
 
