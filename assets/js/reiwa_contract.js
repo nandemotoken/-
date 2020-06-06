@@ -6,7 +6,7 @@ const faucetAddress = "0xB3d225839dAD0567FF713dDBdcEc7bCB6C2536B0";
 //authereum関連
 let authereum;
 let auprovider;
-let auweb3;
+let web3au;
 let auaddress;
 
 //変数定義
@@ -26,7 +26,7 @@ window.onload = async function () {
 	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_Authereum.html"){
 	authereum = await new Authereum('mainnet')
     auprovider = await authereum.getProvider()
-    auweb3 = await new Web3(auprovider) 
+    web3au = await new Web3(auprovider) 
     auaddress = await authereum.getAccountAddress()
 	austartApp();
 	}
@@ -82,8 +82,8 @@ async function startApp() {
 
 async function austartApp() {
 	// reiwatoken = web3.eth.contract(reiwaABI).at(reiwaAddress);
-	reiwatoken = new web3js.eth.Contract(reiwaABI, reiwaAddress);
-	reiwafaucet = new web3js.eth.Contract(faucetABI, faucetAddress);
+	reiwatoken = new web3au.eth.Contract(reiwaABI, reiwaAddress);
+	reiwafaucet = new web3au.eth.Contract(faucetABI, faucetAddress);
 	addr = await web3js.eth.getAccounts();
 	console.log("javascript working user address is " + addr[0]);
 }
