@@ -18,9 +18,9 @@ ethereum.enable();
 	function checkWallet(){
 		if (typeof web3 !== 'undefined') {
 			web3js = new Web3(web3.currentProvider);
-			alert("イーサリアムウォレットを利用します");
+			console.log("MetaMaskを利用します");
 		} else {
-			alert("イーサリアムウォレットを導入してください(MetaMask等)");
+			console.log("MetaMask？どこ？");
 		}
 	}
 	function getAmount(){
