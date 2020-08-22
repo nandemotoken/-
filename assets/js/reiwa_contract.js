@@ -17,13 +17,13 @@ let addr;
 //読み込み待ち
 window.onload = async function () {
 
-	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_MetaMask.html"){
+	if (location.href === "http://www.reiwatoken.jp/index_MetaMask.html"){
 		await ethereum.enable();
 		web3js = new Web3(web3.currentProvider);	
 		startApp();
 	}
 
-	if (location.href === "https://nandemotoken.github.io/reiwatoken/index_Authereum.html"){
+	if (location.href === "http://www.reiwatoken.jp/index_Authereum.html"){
 	authereum = await new Authereum('mainnet')
     auprovider = await authereum.getProvider()
     web3au = await new Web3(auprovider) 
